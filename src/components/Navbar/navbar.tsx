@@ -11,20 +11,22 @@ const Navbar = () => {
   const [showFilters, setShowFilters] = useState(false);
   return (
     <>
-      {showFilters && <FilterModal openModal={showFilters} setOpenModal={setShowFilters} />}
-      <nav className="flex body-regular  border-b border-neutral pb-2 shadow-gray-50 shadow-lg pl-12">
+      {showFilters && (
+        <FilterModal openModal={showFilters} setOpenModal={setShowFilters} />
+      )}
+      <nav className="flex body-regular  border-b border-neutral pb-2 shadow-gray-50 shadow-lg px-8">
         {/* <ul> */}
         <Carousel
           additionalTransfrom={0}
           centerMode={false}
           shouldResetAutoplay={false}
           containerClass="container"
-          //itemClass="ml-10"
+          //itemClass="pl-4"
           partialVisible={true}
           customLeftArrow={
             <button
               type="button"
-              className="border border-neutral absolute shadow-default mr-2  w-8 h-8 rounded-full flex items-center justify-center bg-white"
+              className="border border-neutral absolute shadow-default mr-10  w-8 h-8 rounded-full flex items-center justify-center bg-white"
             >
               <BiChevronLeft color="black" size={22} />
             </button>
@@ -57,20 +59,20 @@ const Navbar = () => {
                 max: 464,
                 min: 0,
               },
-              items: 6,
-              partialVisibilityGutter: 30,
+              items: 2,
+              partialVisibilityGutter: 10,
             },
             tablet: {
               breakpoint: {
                 max: 1024,
-                min: 464,
+                min: 600,
               },
-              items: 2,
-              partialVisibilityGutter: 30,
+              items: 6,
+              partialVisibilityGutter: 10,
             },
           }}
           showDots={false}
-          slidesToSlide={1}
+          slidesToSlide={2}
         >
           {navbarRoutes.map((item, index) => (
             <div key={index} className="">
@@ -88,7 +90,7 @@ const Navbar = () => {
         {/* </ul> */}
 
         <button
-          className="border border-neutral rounded-md px-3 h-10 ml-6 mr-8 flex items-center font-semibold"
+          className="border border-neutral rounded-md px-4 h-10  ml-6 flex items-center font-semibold"
           onClick={() => setShowFilters(true)}
         >
           <img src={Filter} alt="" className="pr-2" />

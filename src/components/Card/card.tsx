@@ -5,6 +5,10 @@ import House1 from "../../assets/images/house1.png";
 import House2 from "../../assets/images/house2.png";
 import House3 from "../../assets/images/house3.png";
 import House4 from "../../assets/images/house4.png";
+import { BsHeartFill } from "react-icons/bs";
+import { useState } from "react";
+import {AiFillStar} from "react-icons/ai";
+
 
 const Card = () => {
   const cardItems = [
@@ -20,21 +24,21 @@ const Card = () => {
       location: "Lagos, Nigeria",
       ratings: "4.74",
       date: "Jan3 3-8",
-      price: "$507",
+      price: "$407",
     },
     {
       images: [House1, House2, House3, House4],
       location: "Lagos, Nigeria",
       ratings: "4.74",
       date: "Jan3 3-8",
-      price: "$507",
+      price: "$307",
     },
     {
       images: [House1, House2, House3, House4],
       location: "Lagos, Nigeria",
       ratings: "4.74",
       date: "Jan3 3-8",
-      price: "$507",
+      price: "$207",
     },
     {
       images: [House1, House2, House3, House4],
@@ -48,25 +52,33 @@ const Card = () => {
       location: "Lagos, Nigeria",
       ratings: "4.74",
       date: "Jan3 3-8",
-      price: "$507",
+      price: "$847",
     },
     {
       images: [House1, House2, House3, House4],
       location: "Lagos, Nigeria",
       ratings: "4.74",
       date: "Jan3 3-8",
-      price: "$507",
+      price: "$670",
     },
     {
       images: [House1, House2, House3, House4],
       location: "Lagos, Nigeria",
       ratings: "4.74",
       date: "Jan3 3-8",
-      price: "$507",
+      price: "$100",
     },
   ];
+  const [like, setLike]=useState<string[]>([]);
+  const handleLike=(value: string)=>{
+    if(like.includes(value)){
+      setLike(like.filter((item)=>item !==value));
+    }else{
+      setLike((like)=>[...like, value])
+    }
+  }
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-10 md:gap-6 mt-4 px-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-10 md:gap-6 mt-4 px-8">
       {cardItems.map((item, index) => (
         <div key={index}>
           <img src="" alt="" className="" />
@@ -95,7 +107,7 @@ const Card = () => {
             }
             draggable={false}
             swipeable={false}
-            focusOnSelect={false}
+            focusOnSelect={true}
             keyBoardControl
             renderButtonGroupOutside={true}
             renderDotsOutside={false}
@@ -114,7 +126,7 @@ const Card = () => {
                   min: 0,
                 },
                 items: 1,
-                partialVisibilityGutter: 30,
+                //partialVisibilityGutter: 30,
               },
               tablet: {
                 breakpoint: {
@@ -122,29 +134,36 @@ const Card = () => {
                   min: 464,
                 },
                 items: 1,
-                partialVisibilityGutter: 30,
+                //partialVisibilityGutter: 30,
               },
             }}
             showDots={true}
             slidesToSlide={1}
           >
-            {item.images.map((item, index) => (
-              <img
+            {item.images.map((value, index) => (
+              <div>
+                <img
                 key={index}
-                src={item}
+                src={value}
                 alt=""
                 //h-40 md:h-52 w-80 object-cover rounded-t-xl
-                className="w-72 object-cover"
+                className="  w-full object-cover"
                 width={200}
                 height={200}
               />
+              <BsHeartFill className="absolute top-4 right-4 border-white"  size="22px" color={like.includes(item.price) ?"#ffffff":"#383829"} onClick={()=>handleLike(item.price)}/>
+              </div>
+              
             ))}
+            {/* <AiOutlineHeart className="absolute top-4" size="22px"/> */}
           </Carousel>
-          <div>
+          <div className="mt-2"> 
+          <div className="flex justify-between">
             <p className="font-semibold">{item.location} </p>
-            <div>
-              <img src="" alt="" />
-              <p>{item.ratings}</p>
+            <div className="flex items-center">
+            <AiFillStar/> 
+              <p className="pl-1">{item.ratings}</p>
+            </div>
             </div>
           </div>
           <p>{item.date}</p>
@@ -153,7 +172,6 @@ const Card = () => {
           </p>
         </div>
       ))}
-      
     </div>
   );
 };
