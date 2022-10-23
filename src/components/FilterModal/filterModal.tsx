@@ -88,11 +88,47 @@ const FilterModal = ({ openModal, setOpenModal }: FilterProps) => {
   ];
   const location = ["Beachfront", "Waterfront"];
   const safety = ["Smoke alarm", "Carbon monoxide alarm"];
-  const guestEntrance =["Step-free guest entrance", "Guest entrance wider than 32 inches", "Accessibile parking spot", "Step-free path to the guest entrance"];
-  const bedrooms=["Step-free bedroom access", "Bedroom entrance wider than 32 inches"];
-  const bathrooms=["Step-free bathroom access", "Bathroom entrance wider than 32 inches", "shower gab bar", "Toilet grab bar", "Step-free shower", "Shower or bath chair"]
-  const adaptiveEquipments=["ceiling or mobile hoist"];
-  const hostLanguage=["English", "French", "German", "Japanese", "Italian", "Russian", "Spanish", "Chinese(Simplified)", "Arabic", "Portuguese", "Turkish", "Indonesian", "Dutch", "Greek", "Hebrew", "Polish","Danish", "Swedish","Norwegian", "Czech" ]
+  const guestEntrance = [
+    "Step-free guest entrance",
+    "Guest entrance wider than 32 inches",
+    "Accessibile parking spot",
+    "Step-free path to the guest entrance",
+  ];
+  const bedrooms = [
+    "Step-free bedroom access",
+    "Bedroom entrance wider than 32 inches",
+  ];
+  const bathrooms = [
+    "Step-free bathroom access",
+    "Bathroom entrance wider than 32 inches",
+    "shower gab bar",
+    "Toilet grab bar",
+    "Step-free shower",
+    "Shower or bath chair",
+  ];
+  const adaptiveEquipments = ["ceiling or mobile hoist"];
+  const hostLanguage = [
+    "English",
+    "French",
+    "German",
+    "Japanese",
+    "Italian",
+    "Russian",
+    "Spanish",
+    "Chinese(Simplified)",
+    "Arabic",
+    "Portuguese",
+    "Turkish",
+    "Indonesian",
+    "Dutch",
+    "Greek",
+    "Hebrew",
+    "Polish",
+    "Danish",
+    "Swedish",
+    "Norwegian",
+    "Czech",
+  ];
   return (
     <Modal
       opened={openModal}
@@ -103,7 +139,7 @@ const FilterModal = ({ openModal, setOpenModal }: FilterProps) => {
       transition="rotate-right"
       transitionDuration={600}
       overlayBlur={2}
-      //overlayColor="#132013"
+      overlayColor="#132013"
       overlayOpacity={0.2}
     >
       <div className="flex items-center">
@@ -123,7 +159,7 @@ const FilterModal = ({ openModal, setOpenModal }: FilterProps) => {
       <div className="h-[450px] overflow-y-scroll">
         <h4 className="text-2xl font-semibold mb-2 mt-4">Price range</h4>
         <p>The average nightly price is $180</p>
-        <div className="pt-6 px-6">
+        <div className="pt-10 px-6">
           <RangeSlider
             defaultValue={[10, 1000]}
             min={0}
@@ -321,8 +357,7 @@ const FilterModal = ({ openModal, setOpenModal }: FilterProps) => {
                       type="checkbox"
                       //id="Entire place"
                       className="accent-black-10 focus:ring-0 outline-none cursor-pointer focus:outline-none border border-neutral-10 h-8 w-6"
-                      // onChange={() => handleList(index)}
-                      // checked={checkboxes[index]}
+                     
                     />
                   </div>
 
@@ -376,10 +411,7 @@ const FilterModal = ({ openModal, setOpenModal }: FilterProps) => {
             <label className={styles.switch}>
               <input
                 type="checkbox"
-                //checked={checked}
-                // onChange={(event) => {
-                //   setChecked(event.currentTarget.checked);
-                // }}
+                
               />
               <span className={`${styles.slider} ${styles.round}`}></span>
             </label>
@@ -387,7 +419,7 @@ const FilterModal = ({ openModal, setOpenModal }: FilterProps) => {
         ))}
         <hr className="text-neutral mt-10 mb-8" />
         <h4 className="font-semibold mb-2">Accessibility features</h4>
-        <p >This info was provided by the Host and reviewed by Airbnb</p>
+        <p>This info was provided by the Host and reviewed by Airbnb</p>
         <p className="font-semibold mt-12">Guest entrance and parking</p>
         <div className="grid grid-cols-2">
           {guestEntrance.map((item, index) => (
@@ -408,7 +440,7 @@ const FilterModal = ({ openModal, setOpenModal }: FilterProps) => {
         </div>
         {showMore ? (
           <>
-          <p className="font-semibold mt-6">Bedroom</p>
+            <p className="font-semibold mt-6">Bedroom</p>
             <div className="grid grid-cols-2">
               {bedrooms.map((item, index) => (
                 <label key={index} htmlFor="Entire place" className="flex pt-4">
@@ -426,9 +458,9 @@ const FilterModal = ({ openModal, setOpenModal }: FilterProps) => {
                 </label>
               ))}
             </div>
-          <p className="font-semibold mt-6">Bathroom</p>
+            <p className="font-semibold mt-6">Bathroom</p>
             <div className="grid grid-cols-2">
-              {bedrooms.map((item, index) => (
+              {bathrooms.map((item, index) => (
                 <label key={index} htmlFor="Entire place" className="flex pt-4">
                   <div>
                     <input
@@ -444,7 +476,7 @@ const FilterModal = ({ openModal, setOpenModal }: FilterProps) => {
                 </label>
               ))}
             </div>
-            
+
             <p className="font-semibold mt-6">Adaptive equiment</p>
             <div className="grid grid-cols-2">
               {adaptiveEquipments.map((item, index) => (
@@ -454,7 +486,6 @@ const FilterModal = ({ openModal, setOpenModal }: FilterProps) => {
                       type="checkbox"
                       //id="Entire place"
                       className="accent-black-10 focus:ring-0 outline-none cursor-pointer focus:outline-none border border-neutral-10 h-8 w-6"
-                      
                     />
                   </div>
 
@@ -462,7 +493,7 @@ const FilterModal = ({ openModal, setOpenModal }: FilterProps) => {
                 </label>
               ))}
             </div>
-           
+
             <p
               className="font-semibold underline cursor-pointer mt-2"
               onClick={() => setShowMore(false)}
